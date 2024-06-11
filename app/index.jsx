@@ -10,7 +10,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import Next from "../assets/images/next.svg";
 import { useFonts } from 'expo-font';
 import { Poppins_400Regular, Poppins_400Regular_Italic, Poppins_700Bold, Poppins_700Bold_Italic } from '@expo-google-fonts/poppins';
-import { AlegreyaSC_400Regular, AlegreyaSC_400Regular_Italic, AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
+import { AlegreyaSC_400Regular, AlegreyaSC_400Regular_Italic, AlegreyaSC_500Medium, AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
 
 const { width } = Dimensions.get('window');
 
@@ -25,6 +25,7 @@ export default function App() {
   const [fontsLoaded] = useFonts({
     AlegreyaSC_400Regular,
     AlegreyaSC_400Regular_Italic,
+    AlegreyaSC_500Medium,
     AlegreyaSC_700Bold,
     Poppins_400Regular,
     Poppins_400Regular_Italic,
