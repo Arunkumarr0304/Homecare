@@ -4,6 +4,9 @@ import Onboard3 from "../../assets/images/Onboard_img3.svg";
 
 import Phone from "../../assets/images/Phone.svg";
 import Google from "../../assets/images/Google.svg";
+import Google2 from "../../assets/images/google2.svg";
+import Facebook from "../../assets/images/facebook.svg";
+import Apple from "../../assets/images/apple.svg";
 
 export const pages = [
     {
@@ -55,5 +58,20 @@ export const tab = [
     {
         id: 2,
         name: 'SignUp',
+    }
+]
+
+export const log_tabs =[
+    {
+        id: 1,
+        icon: <Google2 />,
+    },
+    {
+        id: 2,
+        icon: <Facebook />,
+    },
+    {
+        id: 3,
+        icon: <Apple />,
     }
 ]
