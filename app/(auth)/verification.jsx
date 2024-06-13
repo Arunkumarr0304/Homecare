@@ -6,7 +6,9 @@ import Button from '../../components/Button/Button';
 import { Link, router } from "expo-router";
 
 const Verification = () => {
-
+  const back = () => {
+    router.push('forget_password');
+  };
   const verify = () => {
     router.push('verified');
   };
@@ -59,7 +61,7 @@ const Verification = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={back}>
           <Back />
         </TouchableOpacity>
         <Text style={styles.heading}>Verfication Code</Text>

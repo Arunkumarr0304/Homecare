@@ -8,6 +8,9 @@ import { log_tabs, tab } from '../Data/Data';
 import PhoneInput from '../PhoneInput/PhoneInput';
 
 const Login = () => {
+  const login = () => {
+    router.push('home');
+  };
   const [formattedValue, setFormattedValue] = useState("");
   const [country, setCountry] = useState(null);
 
@@ -31,7 +34,7 @@ const Login = () => {
         />
       </View>
       <Link href='/forget_password' style={styles.forget}>Forgot password ?</Link>
-      <Button buttonText="Sign In" />
+      <Button buttonText="Login" onPress={login} />
       <Text style={styles.or}>Or</Text>
       <Text style={styles.with}>Sign in with</Text>
       <View style={styles.tab_container}>

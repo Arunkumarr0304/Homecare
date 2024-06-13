@@ -3,12 +3,20 @@ import React from 'react';
 import Back from "../../assets/images/back.svg";
 import { AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
 import Button from '../../components/Button/Button';
+import { Link, router } from "expo-router";
 
 const Reset = () => {
+
+  const back = () => {
+    router.push('verified');
+  };
+  
   return (
     <View style={styles.container}>
       <View style={styles.header}>
+        <TouchableOpacity onPress={back}>
         <Back />
+        </TouchableOpacity>
         <Text style={styles.heading}>Create new password</Text>
       </View>
       <View style={styles.input_container}>

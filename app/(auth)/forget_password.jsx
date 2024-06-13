@@ -7,13 +7,16 @@ import Button from '../../components/Button/Button';
 import {Redirect, router} from "expo-router";
 
 const Forget_password = () => {
+  const back = () => {
+    router.push('log_sign');
+  };
   const OTP = () => {
     router.push('verification');
-  }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={back}>
         <Back />
         </TouchableOpacity>
         <Text style={styles.heading}>Forgot password</Text>

@@ -4,10 +4,12 @@ import { tab } from '../../components/Data/Data';
 import { AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
 import Login from '../../components/Login/Login';
 import Signup from '../../components/Signup/Signup';
-
+import { Link, router } from "expo-router";
 
 const Log_sign = () => {
   const [activeTab, setActiveTab] = useState(tab[0].id);
+
+
 
   return (
     <View style={styles.container}>
