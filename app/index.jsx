@@ -9,7 +9,7 @@ import Pagination from "../components/Pagination/Pagination";
 import * as SplashScreen from 'expo-splash-screen';
 import Next from "../assets/images/next.svg";
 import { useFonts } from 'expo-font';
-import { Poppins_400Regular, Poppins_400Regular_Italic, Poppins_700Bold, Poppins_700Bold_Italic, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
+import { Poppins_400Regular, Poppins_400Regular_Italic, Poppins_700Bold, Poppins_700Bold_Italic, Poppins_600SemiBold, Poppins_500Medium } from '@expo-google-fonts/poppins';
 import { AlegreyaSC_400Regular, AlegreyaSC_400Regular_Italic, AlegreyaSC_500Medium, AlegreyaSC_700Bold, AlegreyaSC_800ExtraBold } from '@expo-google-fonts/alegreya-sc';
 
 const { width } = Dimensions.get('window');
@@ -33,6 +33,7 @@ export default function App() {
     Poppins_600SemiBold,
     Poppins_700Bold,
     Poppins_700Bold_Italic,
+    Poppins_500Medium,
     
   });
 

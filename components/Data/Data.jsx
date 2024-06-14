@@ -26,6 +26,50 @@ import Recommend2 from "../../assets/images/recommend2.png";
 import Recommend3 from "../../assets/images/recommend3.png";
 import Recommend4 from "../../assets/images/recommend4.png";
 
+import clean1 from "../../assets/images/clean1.png";
+import clean2 from "../../assets/images/clean2.png";
+import clean3 from "../../assets/images/clean3.png";
+import clean4 from "../../assets/images/clean4.png";
+import clean5 from "../../assets/images/clean5.png";
+import clean6 from "../../assets/images/clean6.png";
+
+import Main1 from "../../assets/images/main1.png";
+import Main2 from "../../assets/images/main2.png";
+import Main3 from "../../assets/images/main3.png";
+import Main4 from "../../assets/images/main4.png";
+import Main5 from "../../assets/images/main5.png";
+import Main6 from "../../assets/images/main6.png";
+
+import Secure1 from "../../assets/images/secure1.png";
+import Secure2 from "../../assets/images/secure2.png";
+import Secure3 from "../../assets/images/secure3.png";
+import Secure4 from "../../assets/images/secure4.png";
+
+import Improve1 from "../../assets/images/improve1.png";
+import Improve2 from "../../assets/images/improve2.png";
+import Improve3 from "../../assets/images/improve3.png";
+import Improve4 from "../../assets/images/improve4.png";
+import Improve5 from "../../assets/images/improve5.png";
+import Improve6 from "../../assets/images/improve6.png";
+
+import Product1 from "../../assets/images/product_img1.svg";
+import Product2 from "../../assets/images/product_img2.svg";
+import Product3 from "../../assets/images/product_img3.svg";
+
+import Provider1 from "../../assets/images/provider1.png";
+import Provider2 from "../../assets/images/provider2.png";
+import Provider3 from "../../assets/images/provider3.png";
+
+import Call from "../../assets/images/blue_call.svg";
+import Heart from "../../assets/images/blue_heart.svg";
+
+import Detail1 from "../../assets/images/detail_star.svg";
+import Detail2 from "../../assets/images/detail_order.svg";
+import Detail3 from "../../assets/images/detail_star2.svg";
+
+import Reviewer from "../../assets/images/reviewer.png";
+import Star from "../../assets/images/reviewer_start.svg";
+
 export const pages = [
     {
         id: 1,
@@ -233,3 +277,280 @@ export const recommend_data = [
     },
 
 ]
+
+
+export const service_provide_data = [
+    {
+        id: 1,
+        image: Recommend1,
+        heading: 'Selamet Raharjo',
+        review: "(150 Review)",
+        service: "Cleaning Service",
+        price: '$50',
+    },
+    {
+        id: 2,
+        image: Recommend2,
+        heading: 'Selamet Raharjo',
+        review: "(150 Review)",
+        service: "Cleaning Service",
+        price: '$50',
+    },
+    {
+        id: 3,
+        image: Recommend3,
+        heading: 'Selamet Raharjo',
+        review: "(150 Review)",
+        service: "Cleaning Service",
+        price: '$50',
+    },
+    {
+        id: 4,
+        image: Recommend4,
+        heading: 'Selamet Raharjo',
+        review: "(150 Review)",
+        service: "Cleaning Service",
+        price: '$50',
+    },
+    {
+        id: 5,
+        image: Recommend1,
+        heading: 'Selamet Raharjo',
+        review: "(150 Review)",
+        service: "Cleaning Service",
+        price: '$50',
+    },
+    {
+        id: 6,
+        image: Recommend2,
+        heading: 'Selamet Raharjo',
+        review: "(150 Review)",
+        service: "Cleaning Service",
+        price: '$50',
+    },
+
+]
+
+export const cleaning_data = [
+    {
+      id: 1,
+      image: clean1,
+      text: 'Home Cleaning',
+    },
+    {
+      id: 2,
+      image: clean2,
+      text: 'Kitchen Cleaning',
+    },
+    {
+      id: 3,
+      image: clean3,
+      text: 'Dress Washing',
+    },
+    {
+      id: 4,
+      image: clean4,
+      text: 'Car Cleaning',
+    },
+    {
+      id: 5,
+      image: clean5,
+      text: 'Bathroom Cleaning',
+    },
+    {
+      id: 6,
+      image: clean6,
+      text: 'Garden Cleaning',
+    },
+  ];
+
+
+  export const Main_data = [
+    {
+        id: 1,
+        image: Main1,
+        text: 'Ac Repair',
+    },
+    {
+        id: 2,
+        image: Main2,
+        text: 'Plumping',
+    },
+    {
+        id: 3,
+        image: Main3,
+        text: 'Television',
+    },
+    {
+        id: 4,
+        image: Main4,
+        text: 'Mobile services',
+    },
+    {
+        id: 5,
+        image: Main5,
+        text: 'Laptop',
+    },
+    {
+        id: 6,
+        image: Main6,
+        text: 'Car services',
+    },
+  ]
+
+  export const secure_data = [
+    {
+        id: 1,
+        image: Secure1,
+        text: 'Camera Fixing',
+    },
+    {
+        id: 2,
+        image: Secure2,
+        text: 'LockSmith',
+    },
+    {
+        id: 3,
+        image: Secure3,
+        text: 'Smart Door Lock',
+    },
+    {
+        id: 4,
+        image: Secure4,
+        text: 'Sensor fixing',
+    },
+]
+
+export const improve_data = [
+    {
+        id: 1,
+        image: Improve1,
+        text: 'Painting',
+    },
+    {
+        id: 2,
+        image: Improve2,
+        text: 'window Fix',
+    },
+    {
+        id: 3,
+        image: Improve3,
+        text: 'Door fix',
+    },
+    {
+        id: 4,
+        image: Improve4,
+        text: 'Flooring',
+    },
+    {
+        id: 5,
+        image: Improve5,
+        text: 'Home Renew',
+    },
+    {
+        id: 6,
+        image: Improve6,
+        text: 'Kitchen Renew',
+    },
+  ]
+
+  export const booking_tab = [
+    {
+        id: 1,
+        text: 'Confirmed',
+    },
+    {
+        id: 2,
+        text: 'Pending',
+    },
+    {
+        id: 3,
+        text: 'Completed',
+    },
+    {
+        id: 4,
+        text: 'Rejected',
+    },
+  ]
+
+
+  export const booking_status = [
+    {
+        id: 1,
+        product: <Product3 />,
+        provider: Provider1,
+        providername: 'Emily Jani',
+        product_name: 'AC Installation',
+        code: "Reference Code: #D-571224",
+        timing: '8:00-9:00 AM,  09 Dec',
+    },
+    {
+        id: 2,
+        product: <Product2 />,
+        provider: Provider2,
+        providername: 'Emily Jani',
+        product_name: 'Electrician',
+        code: "Reference Code: #D-571224",
+        timing: '8:00-9:00 AM,  09 Dec',
+    },
+    {
+        id: 3,
+        product: <Product1 />,
+        provider: Provider3,
+        providername: 'Emily Jani',
+        product_name: 'painting',
+        code: "Reference Code: #D-571224",
+        timing: '8:00-9:00 AM,  09 Dec',
+    },
+  ]
+
+
+  export const details_head = [
+    {
+        id: 1,
+        icon: <Call />,
+    },
+    {
+        id: 2,
+        icon: <Heart />,
+    }
+  ]
+
+
+  export const  review_row = [
+    {
+        id: 1,
+        image: <Detail1 />,
+        text:  '4.8 Rating',
+    },
+    {
+        id: 2,
+        image: <Detail2 />,
+        text: '56 Orders Completed',
+    },
+    {
+        id: 3,
+        image: <Detail3 />,
+        text: '4 Years Experience',
+    },
+  ]
+
+
+  export const reviews = [
+    {
+        id: 1,
+        image: Reviewer,
+        reviewer: 'Josh Peter',
+        star: <Star />,
+        review: 'Emily Jani exceeded my expectations! Quick, reliable, and fixed my plumbing issue with precision. Highly recommend.',
+        date: '12/12/2024',
+    },
+    {
+        id: 2,
+        image: Reviewer,
+        reviewer: 'Josh Peter',
+        star: <Star />,
+        review: 'Emily Jani exceeded my expectations! Quick, reliable, and fixed my plumbing issue with precision. Highly recommend.',
+        date: '12/12/2024',
+    },
+  ]
