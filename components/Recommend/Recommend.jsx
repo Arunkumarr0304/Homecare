@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { Link, router } from "expo-router";
 import { AlegreyaSC_500Medium, AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
 import Star from "../../assets/images/recommend_star.svg";
 import Approved from "../../assets/images/approved.svg";
@@ -7,6 +8,9 @@ import { recommend_data } from '../Data/Data';
 import { Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
 
 const Recommend = () => {
+    const book_now = () => {
+        router.push('address_details');
+    };
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Our Top Recommended</Text>
@@ -26,7 +30,7 @@ const Recommend = () => {
                         <Text style={styles.price}>{d.price}</Text>
                         </View>
                         <View style={styles.button_container}>
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity style={styles.button} onPress={book_now}>
                                 <Text style={styles.button_text}>Book Now</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.button}>

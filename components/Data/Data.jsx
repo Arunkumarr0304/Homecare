@@ -554,3 +554,27 @@ export const improve_data = [
         date: '12/12/2024',
     },
   ]
+
+  export const cards = [
+    {
+        id: 1,
+        card_no : '•••• •••• •••• 3282',
+        name: 'Aycan Doganlar',
+        date: '12/23',
+        card_bg: '#EB7777',
+    },
+    {
+        id: 2,
+        card_no : '•••• •••• •••• 3282',
+        name: 'Aycan Doganlar',
+        date: '12/23',
+        card_bg: '#241353',
+    },
+    {
+        id: 3,
+        card_no : '•••• •••• •••• 3282',
+        name: 'Aycan Doganlar',
+        date: '12/23',
+        card_bg: '#7AA0DA',
+    },
+  ]
