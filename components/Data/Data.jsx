@@ -1,6 +1,7 @@
-import Onboard1 from "../../assets/images/Onboard_img1.svg";
-import Onboard2 from "../../assets/images/Onboard_img2.svg";
-import Onboard3 from "../../assets/images/Onboard_img3.svg";
+import onboar1 from "../../assets/images/Onboard_img1.png";
+import onboar2 from "../../assets/images/Onboard_img2.png";
+import onboar3 from "../../assets/images/Onboard_img3.png";
+
 
 import Phone from "../../assets/images/Phone.svg";
 import Google from "../../assets/images/Google.svg";
@@ -77,21 +78,21 @@ import Review2 from "../../assets/images/review_pic2.png";
 export const pages = [
     {
         id: 1,
-        image: <Onboard3 /> ,
+        image: onboar1,
         heading: 'Discover Your Sound',    
         Text: 'Find and enjoy your favorite tunes effortlessly. Join a community of music lovers today.',
         
     },
     {
         id: 2,
-        image: <Onboard2 />,
+        image: onboar2,
         heading: 'Soundtrack Your Life',
         Text: 'Find and enjoy your favorite tunes effortlessly. Join a community of music lovers today.',
 
     },
     {
         id: 3,
-        image: <Onboard1 />,
+        image: onboar3,
         heading: 'Your Music, Your Way',
         Text: 'Find and enjoy your favorite tunes effortlessly. Join a community of music lovers today.',
 
@@ -629,5 +630,122 @@ export const improve_data = [
         review: 'Is there a therapy which can cure crossdressing & bdsm compulsion?',
         likes: '12',
         comment: '2',
+    },
+  ]
+
+  export const services = [
+    {
+        id: 1,
+        text: 'cleaning',
+    },
+    {
+        id: 2,
+        text: 'Maintanace',
+    },
+    {
+        id: 3,
+        text: 'Security',
+    },
+    {
+        id: 4,
+        text: 'Home Improvement',
+    },
+    {
+        id: 5,
+        text: 'Electronics',
+    },
+  ]
+
+
+  export const available = [
+    {
+        id: 1,
+        text: 'Urgently',
+    },
+    {
+        id: 2,
+        text: 'specific times',
+    }
+  ]
+
+  export const Experience = [
+    {
+        id: 1,
+        text: 'ALL',
+    },
+    {
+        id: 2,
+        text: 'A year',
+    },
+    {
+        id: 3,
+        text: '2 year',
+    },
+    {
+        id: 4,
+        text: '3 year',
+    },
+    {
+        id: 5,
+        text: '4 year',
+    },
+    {
+        id: 6,
+        text: '5+ year',
+    },
+    {
+        id: 7,
+        text: '10+ year ',
+    },
+  ]
+
+
+  export const filter_rating = [
+    {
+        id: 1,
+        rating: 0,
+    },
+    {
+        id: 2,
+        rating: 5,
+    }
+  ]
+
+  export const filter_rating2 = [
+    {
+        id: 1,
+        rating: '10$',
+    },
+    {
+        id: 2,
+        rating: '500$',
+    }
+  ]
+
+
+  export const profile_data = [
+    {
+        id: 1,
+        text: 'Edit Profile',
+    },
+    {
+        id: 2,
+        text: 'My Bookings',
+    },
+    {
+        id: 3,
+        text: 'Change Payment',
+    },
+    {
+        id: 4,
+        text: 'Change Address',
+    },
+    {
+        id: 5,
+        text: 'Help & Support',
+    },
+    {
+        id: 6,
+        text: 'Log Out',
     },
   ]

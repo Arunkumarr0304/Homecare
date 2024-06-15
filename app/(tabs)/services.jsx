@@ -15,6 +15,9 @@ const Service_Provider = () => {
     const filter = () => {
         router.push('search_filter');
     };
+    const book_now = () => {
+        router.push('address_details');
+    };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -44,7 +47,7 @@ const Service_Provider = () => {
                         </View>
                         <View style={styles.button_container}>
                         <TouchableOpacity style={styles.button}>
-                                <Text style={styles.button_text}>Book Now</Text>
+                                <Text style={styles.button_text} onPress={book_now}>Book Now</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.button}>
                                 <Text style={styles.button_text}>Message</Text>

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
-import { View, Text, StyleSheet, Dimensions, ScrollView, StatusBar, Animated, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Dimensions, ScrollView, StatusBar, Animated, TouchableOpacity, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from '@react-navigation/native';
 import { pages } from "../components/Data/Data";
@@ -97,7 +97,7 @@ export default function App() {
         {pages.map((page, index) => (
           <View key={index} style={[styles.page, { width }]}>
             <View style={styles.imageContainer}>
-              {page.image}
+              <Image source={page.image} alt="images" style={styles.image} />
             </View>
           </View>
         ))}
@@ -140,7 +140,15 @@ const styles = StyleSheet.create({
     paddingTop: 70,
   },
   imageContainer: {
+    height: 330,
+    maxWidth: 360,
     width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  image: {
+    height: 330,
+    resizeMode: 'contain',
   },
   onboard_content: {
     position: 'absolute',

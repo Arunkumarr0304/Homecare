@@ -14,6 +14,7 @@ import Recommend from '../../components/Recommend/Recommend';
 const Home = () => {
     const [searchText, setSearchText] = useState('');
 
+    
   return (
     <View style={styles.container}>
       <View style={styles.header}>

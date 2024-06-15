@@ -11,13 +11,16 @@ const Recommend = () => {
     const book_now = () => {
         router.push('address_details');
     };
+    const details =() => {
+        router.push('provider_details');
+    };
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Our Top Recommended</Text>
       <View style={styles.box_container}>
         {
             recommend_data.map((d) => (
-                <TouchableOpacity style={styles.box} key={d.id}>
+                <TouchableOpacity style={styles.box} key={d.id} onPress={details}>
                     <Image source={d.image} alt='image' style={styles.profile} />
                     <TouchableOpacity style={styles.approved}>
                         <Approved />
