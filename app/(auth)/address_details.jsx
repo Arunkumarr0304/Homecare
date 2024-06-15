@@ -21,6 +21,8 @@ const Address_details = () => {
       router.push('card_details');
   };
 
+  
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>

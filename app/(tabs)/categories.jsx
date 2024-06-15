@@ -6,10 +6,15 @@ import Main from "../../assets/images/maintance.svg";
 import Secure from "../../assets/images/security.svg";
 import Improve from "../../assets/images/improve.svg";
 import { Main_data, cleaning_data, improve_data, secure_data } from '../../components/Data/Data';
-
+import { Link, router } from "expo-router";
 
 
 const Categories = () => {
+
+  const details = () => {
+    router.push('cate_details');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Categories</Text>
@@ -21,7 +26,7 @@ const Categories = () => {
       <View style={styles.stack_container}>
         {
           cleaning_data.map((d) => (
-            <TouchableOpacity style={styles.stack} key={d.id}>
+            <TouchableOpacity style={styles.stack} key={d.id} onPress={details}>
             <Image source={d.image} style={styles.image} />
             <Text style={styles.stack_text}>{d.text}</Text>
           </TouchableOpacity>
@@ -36,7 +41,7 @@ const Categories = () => {
       <View style={styles.stack_container}>
         {
           Main_data.map((d) => (
-            <TouchableOpacity style={styles.stack} key={d.id}>
+            <TouchableOpacity style={styles.stack} key={d.id} onPress={details} >
             <Image source={d.image} style={styles.image} />
             <Text style={styles.stack_text}>{d.text}</Text>
           </TouchableOpacity>
@@ -52,7 +57,7 @@ const Categories = () => {
       <View style={styles.stack_container}>
         {
           secure_data.map((d) => (
-            <TouchableOpacity style={styles.stack} key={d.id}>
+            <TouchableOpacity style={styles.stack} key={d.id} onPress={details} >
             <Image source={d.image} style={styles.image} />
             <Text style={styles.stack_text}>{d.text}</Text>
           </TouchableOpacity>
@@ -68,7 +73,7 @@ const Categories = () => {
       <View style={styles.stack_container}>
         {
           improve_data.map((d) => (
-            <TouchableOpacity style={styles.stack} key={d.id}>
+            <TouchableOpacity style={styles.stack} key={d.id} onPress={details} >
             <Image source={d.image} style={styles.image} />
             <Text style={styles.stack_text}>{d.text}</Text>
           </TouchableOpacity>

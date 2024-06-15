@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     borderRadius: 37,
     justifyContent: 'center',
-    minWidth: 200,
+  
   },
   buttonText: {
     textTransform: 'capitalize',

@@ -12,11 +12,16 @@ const Service_Provider = () => {
     const details =() => {
         router.push('provider_details');
     };
+    const filter = () => {
+        router.push('search_filter');
+    };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
       <Text style={styles.heading}>Services Provider</Text>
+      <TouchableOpacity onPress={filter} >
       <Filter />
+      </TouchableOpacity>
       </View>
 
     <ScrollView showsVerticalScrollIndicator={false}>

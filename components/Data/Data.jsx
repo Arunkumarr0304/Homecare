@@ -70,6 +70,10 @@ import Detail3 from "../../assets/images/detail_star2.svg";
 import Reviewer from "../../assets/images/reviewer.png";
 import Star from "../../assets/images/reviewer_start.svg";
 
+import Review1 from "../../assets/images/review_pic1.png";
+import Review2 from "../../assets/images/review_pic2.png";
+
+
 export const pages = [
     {
         id: 1,
@@ -576,5 +580,54 @@ export const improve_data = [
         name: 'Aycan Doganlar',
         date: '12/23',
         card_bg: '#7AA0DA',
+    },
+  ]
+
+  export const available_time = [
+    {
+        id: 1,
+        time: '08 : 00',
+    },
+
+    {
+        id: 2,
+        time: '09 : 00',
+    },
+    {
+        id: 3,
+        time: '10 : 00',
+    },
+    {
+        id: 4,
+        time: '11 : 00',
+    },
+    {
+        id: 5,
+        time: '12 : 00',
+    },
+    {
+        id: 6,
+        time: '01 : 00',
+    },
+  ]
+
+
+  export const Reviews = [
+    {
+        id: 1,
+        reviewer: Review1,
+        name: 'Coal Dingo',
+        timing: 'just now',
+        review: 'Is there a therapy which can cure crossdressing & bdsm compulsion?',
+        likes: '2',
+    },
+    {
+        id: 2,
+        reviewer: Review2,
+        name: 'Pigeon Car',
+        timing: '3 hrs ago',
+        review: 'Is there a therapy which can cure crossdressing & bdsm compulsion?',
+        likes: '12',
+        comment: '2',
     },
   ]
