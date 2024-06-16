@@ -1,13 +1,15 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, router } from "expo-router";
 import { AlegreyaSC_500Medium, AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
 import Star from "../../assets/images/recommend_star.svg";
 import Approved from "../../assets/images/approved.svg";
 import { recommend_data } from '../Data/Data';
 import { Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
+import ThemeContext from '../../theme/ThemeContext';
 
 const Recommend = () => {
+    const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
     const book_now = () => {
         router.push('address_details');
     };
@@ -16,7 +18,7 @@ const Recommend = () => {
     };
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Our Top Recommended</Text>
+      <Text style={[styles.heading, {color: theme.color}]}>Our Top Recommended</Text>
       <View style={styles.box_container}>
         {
             recommend_data.map((d) => (
@@ -78,6 +80,7 @@ const styles = StyleSheet.create({
         position: 'relative',
         marginTop: 55,
         maxWidth: 155,
+        backgroundColor: '#ffffff',
     },
     profile: {
         width: 85,

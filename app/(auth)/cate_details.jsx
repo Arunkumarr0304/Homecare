@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import Back from "../../assets/images/back2.svg";
+import Dark_back from "../../assets/images/Dark_back2.svg";
 import Category from "../../assets/images/cate_details.png";
 import Slider from '@react-native-community/slider';
 import CustomCalendar from '../../components/Custom_calendar/Custom_Calendar';
@@ -8,13 +9,16 @@ import Mark from "../../assets/images/mark.svg";
 import { Poppins_400Regular, Poppins_500Medium, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import { Reviews, available_time } from '../../components/Data/Data';
 import Like from "../../assets/images/like.svg";
+import Liked from "../../assets/images/liked.svg";
 import Comment from "../../assets/images/comment.svg";
 import Share from "../../assets/images/share.svg";
 import Up from "../../assets/images/drop_up.svg";
 import Button from '../../components/Button/Button';
 import {Redirect, router} from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Cate_details = () => {
+  const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
   const [sliderValue, setSliderValue] = useState(0);
   const [selectedTime, setSelectedTime] = useState(null);
 
@@ -22,6 +26,7 @@ const Cate_details = () => {
     setSliderValue(value);
     console.log('Slider value changed:', value);
   };
+
 
   const handleTimeSelect = (time) => {
     setSelectedTime(time);
@@ -31,20 +36,27 @@ const Cate_details = () => {
   const book_now = () => {
     router.push('address_details');
   };
+
+  const back = () => {
+    router.push('categories');
+  };
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
-        <Back />
-        <Text style={styles.heading}>Home Cleaning</Text>
+        <TouchableOpacity onPress={back}>
+       {darkMode? <Dark_back /> : <Back />}
+        </TouchableOpacity>
+        <Text style={[styles.heading, {color: theme.heading}]}>Home Cleaning</Text>
       </View>
       <ScrollView style={styles.scrolls} showsVerticalScrollIndicator={false}>
         <Image source={Category} alt='image' style={styles.image} />
-        <Text style={styles.title}>Description</Text>
-        <Text style={styles.description}>
+        <Text style={[styles.title, {color: theme.color}]}>Description</Text>
+        <Text style={[styles.description, {color: theme.text2}]}>
           Lorem ipsum is a placeholder text commonly used to demonstrate the visual. Lorem ipsum is a placeholder text commonly used to demonstrate the visual. Lorem ipsum is a placeholder text commonly used to demonstrate the visuaplaceholder text commonly used to demonstrate the viplaceholder text commonly used to demonstrate the visual. Lorem ipsum is a placeholder text commonly used to demonstrate the visual. placeholder text commonly used to demonstrate the visual. Lorem ipsum is a placeholder text commonly used to demonstrate the visual. placeholder text commonly used to demonstrate the visual.
         </Text>
 
-        <Text style={styles.title2}>Home Size</Text>
+        <Text style={[styles.title2, {color:theme.color}]}>Home Size</Text>
         <View style={styles.frequencyContainer}>
           <Slider
             style={styles.slider}
@@ -52,17 +64,17 @@ const Cate_details = () => {
             maximumValue={3000}
             value={sliderValue}
             onValueChange={handleSliderChange}
-            minimumTrackTintColor="#241353"
+            minimumTrackTintColor="blue"
             maximumTrackTintColor="#ddd"
             thumbTintColor="blue"
           />
-          <Text style={styles.label}>{Math.round(sliderValue)} sqft</Text>
+          <Text style={[styles.label, {color: theme.color}]}>{Math.round(sliderValue)} sqft</Text>
         </View>
 
-        <Text style={styles.title2}>Select the date</Text>
+        <Text style={[styles.title2, {color:theme.color}]}>Select the date</Text>
         <CustomCalendar />
 
-        <Text style={styles.title2}>Available Time</Text>
+        <Text style={[styles.title2, {color: theme.color}]}>Available Time</Text>
         <View style={styles.time_header}>
           <Text style={styles.available_text}>Morning</Text>
           <Mark />
@@ -73,17 +85,18 @@ const Cate_details = () => {
               key={time.id}
               style={[
                 styles.time_box,
-                selectedTime === time.time && styles.activeTimeBox,
+                selectedTime === time.time && [styles.activeTimeBox, {backgroundColor: theme.heading}],
+                
               ]}
               onPress={() => handleTimeSelect(time.time)}
             >
-              <Text style={[styles.time, selectedTime === time.time && styles.activeTimeText]}>
+              <Text style={[styles.time, selectedTime === time.time && [styles.activeTimeText, {color: theme.background}]]}>
                 {time.time}
               </Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
-        <Text style={styles.title2}>Reviews</Text>
+        <Text style={[styles.title2, {color: theme.color}]}>Reviews</Text>
         <View style={styles.reviews_container}>
             {
                 Reviews.map((d) => (
@@ -91,18 +104,18 @@ const Cate_details = () => {
                     <Image source={d.reviewer} alt='image' style={styles.images} />
                     <View style={styles.box_right}>
                     <View style={styles.timing_row}>
-                        <Text style={styles.name}>{d.name}</Text>
-                        <Text style={styles.review_time}>{d.timing}</Text>
+                        <Text style={[styles.name, {color: theme.heading}]}>{d.name}</Text>
+                        <Text style={[styles.review_time, {color: theme.color}]}>{d.timing}</Text>
                     </View>
                     <Text style={styles.review}>{d.review}</Text>
                     <View style={styles.bottom_row}>
                     <View style={styles.like_row}>
-                    <Like />
-                    <Text style={styles.likes}>{d.likes}</Text>
+                   {darkMode? <Liked /> : <Like />}
+                    <Text style={[styles.likes, {color: theme.color}]}>{d.likes}</Text>
                     </View>
                     <View style={styles.comment_row}>
                     <Comment />
-                    <Text style={styles.comments}>{d.comment}</Text>
+                    <Text style={[styles.comments, {color: theme.color}]}>{d.comment}</Text>
                     </View>
                     <Share />
                     </View>
@@ -113,8 +126,8 @@ const Cate_details = () => {
         </View>
         <View style={styles.total_bill}>
             <View style={styles.total_row}>
-                <Text style={styles.total}>Total:</Text>
-                <Text style={styles.value}>  USD 150.50</Text>
+                <Text style={[styles.total, {color: theme.heading}]}>Total:</Text>
+                <Text style={[styles.value, {color: theme.color}]}>  USD 150.50</Text>
             </View>
             <View style={styles.bill_row}>
                 <Text style={styles.bill}>Bill Details</Text>

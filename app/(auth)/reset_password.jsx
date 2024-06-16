@@ -1,27 +1,31 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import Back from "../../assets/images/back.svg";
+import Dark_back from "../../assets/images/Dark_back.svg";
 import { AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
 import Button from '../../components/Button/Button';
 import { Link, router } from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Reset = () => {
-
+  const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
   const back = () => {
     router.push('verified');
   };
-  
+  const submit = () => {
+    router.push('home');
+  };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={back}>
-        <Back />
+       {darkMode? <Dark_back /> : <Back />}
         </TouchableOpacity>
-        <Text style={styles.heading}>Create new password</Text>
+        <Text style={[styles.heading, {color:theme.heading}]}>Create new password</Text>
       </View>
       <View style={styles.input_container}>
       <View style={styles.input_box}>
-        <Text style={styles.label}>Create New Password</Text>
+        <Text style={[styles.label, {color: theme.color}]}>Create New Password</Text>
         <TextInput
           style={styles.password_input}
           placeholder='Enter password'
@@ -29,7 +33,7 @@ const Reset = () => {
         />
       </View>
       <View style={styles.input_box}>
-        <Text style={styles.label}>Confirm New Password</Text>
+        <Text style={[styles.label, {color: theme.color}]}>Confirm New Password</Text>
         <TextInput
           style={styles.password_input}
           placeholder='Re- Enter Password'
@@ -37,7 +41,7 @@ const Reset = () => {
         />
       </View>
       </View>
-      <Button buttonText="SUMBIT" />
+      <Button buttonText="SUMBIT" onPress={submit} />
     </View>
   )
 }

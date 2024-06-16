@@ -1,13 +1,16 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Image, StatusBar } from 'react-native';
+import React, { useContext } from 'react';
 import { AlegreyaSC_400Regular, AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
 import Button from '../../components/Button/Button';
 import { method } from '../../components/Data/Data';
 import { Poppins_400Regular } from '@expo-google-fonts/poppins';
 import { Link, router } from "expo-router";
 import Method from "../../assets/images/method.png";
+import Dark_method from "../../assets/images/dark_method.png";
 import Location from "../../assets/images/location.svg";
+import Dark_location from "../../assets/images/dark_location.svg";
 import Command from "../../assets/images/command.svg";
+import Dark_command from "../../assets/images/dark_command.svg";
 import Profile1 from "../../assets/images/profile1.png";
 import Profile2 from "../../assets/images/profile2.png";
 import Profile3 from "../../assets/images/profile3.png";
@@ -15,8 +18,10 @@ import Profile4 from "../../assets/images/profile4.png";
 import Profile5 from "../../assets/images/profile5.png";
 import Profile6 from "../../assets/images/profile6.png";
 import Profile7 from "../../assets/images/profile7.png";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Log_method = () => {
+    const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
     const login = () => {
         router.push('log_sign');
     };
@@ -28,14 +33,19 @@ const Log_method = () => {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: theme.background}]}>
+              <StatusBar 
+        translucent
+        backgroundColor="transparent"
+        barStyle={darkMode ? "light-content" : "dark-content"} 
+      />
             <View style={styles.image_container}>
-                <Image source={Method} alt='image' style={styles.image1} />
+                { darkMode? <Image source={Dark_method} alt='image' style={styles.image1} /> : <Image source={Method} alt='image' style={styles.image1} />}
                 <View style={styles.location}>
-                    <Location />
+                   {darkMode? <Dark_location /> : <Location />}
                 </View>
                 <View style={styles.command}>
-                    <Command />
+                  {darkMode? <Dark_command /> :  <Command />}
                 </View>
                 <Image source={Profile1} alt='image' style={styles.profile1} />
                 <Image source={Profile2} alt='image' style={styles.profile2} />
@@ -46,20 +56,20 @@ const Log_method = () => {
                 <Image source={Profile7} alt='image' style={styles.profile7} />
             </View>
             <View style={styles.method_content}>
-                <Text style={styles.content_heading}>Find The Best Working People</Text>
+                <Text style={[styles.content_heading, {color: theme.color}]}>Find The Best Working People</Text>
                 <View style={styles.button_container}>
                     {method.map((d) => (
                         <TouchableOpacity
-                            style={[styles.stack, { backgroundColor: d.backgroundColor }]}
-                            key={d.id}
+                        style={[styles.stack, { backgroundColor: darkMode && d.id === 1 ? theme.heading3 : d.backgroundColor }]}
+                        key={d.id}
                             onPress={() => handleLogin(d)}
                         >
                             {d.image}
-                            <Text style={[styles.stack_text, { color: d.textColor }]}>{d.text} </Text>
+                            <Text style={[styles.stack_text, { color: darkMode && d.id === 1 ? theme.heading2 : d.textColor }]}>{d.text} </Text>
                         </TouchableOpacity>
                     ))}
                 </View>
-                <Text style={styles.bottom_text}>
+                <Text style={[styles.bottom_text, {color:theme.color}]}>
                     Don’t have an account?<Link href="/log_sign?tab=signup"> Sign Up</Link>
                 </Text>
             </View>
@@ -72,6 +82,7 @@ export default Log_method;
 const styles = StyleSheet.create({
     container: {
         paddingTop: 50,
+        paddingBottom: 150,
     },
     image_container: {
         alignItems: 'center',

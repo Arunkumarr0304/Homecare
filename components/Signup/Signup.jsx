@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native'
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import { AlegreyaSC_500Medium } from '@expo-google-fonts/alegreya-sc';
 import Drop from "../../assets/images/drop_down.svg";
 import { Poppins_600SemiBold } from '@expo-google-fonts/poppins';
@@ -7,9 +7,12 @@ import PhoneInput from '../PhoneInput/PhoneInput';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Button from '../Button/Button';
+import { Link, router } from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
 
 
 const Signup = () => {
+  const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
   const [formattedValue, setFormattedValue] = useState("");
   const [country, setCountry] = useState(null);
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -23,11 +26,14 @@ const Signup = () => {
     setPasswordVisible1(!passwordVisible1);
   };
 
+  const sign = () => {
+    router.push('home');
+  };
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false} >
         <View style={styles.input_contiainer}>
           <View style={styles.input_section}>
-          <Text style={styles.label}>First Name</Text>
+          <Text style={[styles.label, {color: theme.color}]}>First Name</Text>
           <TextInput
             style={[styles.input1]}
             autoCapitalize="none"
@@ -39,7 +45,7 @@ const Signup = () => {
           </View>
           </View>
           <View style={styles.input_section}>
-       <Text style={styles.label}>Phone Number</Text>
+       <Text style={[styles.label, {color: theme.color}]}>Phone Number</Text>
        <PhoneInput
         defaultCode="US"
         defaultValue=""
@@ -48,7 +54,7 @@ const Signup = () => {
       />
       </View>
       <View style={styles.input_section}>
-          <Text style={styles.label}>Email</Text>
+          <Text style={[styles.label, {color: theme.color}]}>Email</Text>
           <TextInput
             style={[styles.input]}
             autoCapitalize="none"
@@ -56,7 +62,7 @@ const Signup = () => {
           />
           </View>
           <View style={styles.input_section}>
-          <Text style={styles.label}>address</Text>
+          <Text style={[styles.label, {color: theme.color}]}>address</Text>
           <TextInput
             style={[styles.input]}
             autoCapitalize="none"
@@ -64,7 +70,7 @@ const Signup = () => {
           />
           </View>
           <View style={styles.input_section}>
-          <Text style={styles.label}>Create Password</Text>
+          <Text style={[styles.label, {color: theme.color}]}>Create Password</Text>
           <TextInput
             style={[styles.password_input, styles.passwordInput]}
             secureTextEntry={!passwordVisible}
@@ -82,7 +88,7 @@ const Signup = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.input_section}>
-          <Text style={styles.label}>Re-enter Password</Text>
+          <Text style={[styles.label, {color: theme.color}]}>Re-enter Password</Text>
           <TextInput
             style={[styles.password_input, styles.passwordInput]}
             secureTextEntry={!passwordVisible1}
@@ -101,7 +107,7 @@ const Signup = () => {
         </View>
         </View>
         <View style={styles.button_box}>
-        <Button buttonText="signup" />
+        <Button buttonText="signup" onPress={sign} />
         </View>
     </ScrollView>
   )

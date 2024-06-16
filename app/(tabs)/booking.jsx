@@ -1,15 +1,22 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Back from "../../assets/images/back2.svg";
+import Dark_Back from "../../assets/images/Dark_back2.svg";
 import { AlegreyaSC_400Regular, AlegreyaSC_500Medium, AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
 import { booking_status, booking_tab } from '../../components/Data/Data';
 import { Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 import Calendar from "../../assets/images/calendar.svg";
 import Call from "../../assets/images/call.svg";
 import { Link, router } from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Booking = () => {
+  const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
   const [activeTab, setActiveTab] = useState(booking_tab[0].id);
+
+  const back = () => {
+    router.push('home');
+  };
 
   const safeStringifyBooking = (booking) => {
     return JSON.stringify({
@@ -28,19 +35,21 @@ const Booking = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
-        <Back />
-        <Text style={styles.heading}>Booking History</Text>
+        <TouchableOpacity onPress={back}>
+        {darkMode ? <Dark_Back /> : <Back />}
+        </TouchableOpacity>
+        <Text style={[styles.heading, {color: theme.heading}]}>Booking</Text>
       </View>
       <View style={styles.tab_container}>
         {booking_tab.map((d) => (
           <TouchableOpacity
-            style={[styles.tab, activeTab === d.id && styles.active_tab]}
+            style={[styles.tab, activeTab === d.id && styles.active_tab, { borderColor: theme.bordercolor}]}
             key={d.id}
             onPress={() => setActiveTab(d.id)}
           >
-            <Text style={[styles.tab_text, activeTab === d.id && styles.active_tab_text]}>
+            <Text style={[styles.tab_text, activeTab === d.id && styles.active_tab_text, {color: theme.color}]}>
               {d.text}
             </Text>
           </TouchableOpacity>
@@ -148,7 +157,9 @@ const styles = StyleSheet.create({
     paddingBottom: 150,
   },
   status_box: {
-    // Your styles here...
+    backgroundColor: '#F3EFFF',
+    padding: 10,
+    borderRadius: 5,
   },
   status_heading: {
     flexDirection: 'row',

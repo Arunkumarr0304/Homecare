@@ -1,12 +1,15 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import Verify from "../../assets/images/verified.webp";
 import Back from "../../assets/images/back.svg";
+import Dark_back from "../../assets/images/Dark_back.svg";
 import { AlegreyaSC_800ExtraBold } from '@expo-google-fonts/alegreya-sc';
 import Button from '../../components/Button/Button';
 import { Link, router } from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Verified = () => {
+  const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
   const back = () => {
     router.push('verification');
   };
@@ -14,11 +17,11 @@ const Verified = () => {
     router.push('reset_password');
   };
   return (
-    <View style={styles.main_container}>
+    <View style={[styles.main_container, {backgroundColor: theme.background}]}>
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity style={styles.back} onPress={back}>
-          <Back width={30} height={30} />
+         {darkMode?  <Dark_back width={30} height={30} /> : <Back width={30} height={30} />}
         </TouchableOpacity>
       </View>
       <View style={styles.image_box}>
@@ -27,7 +30,7 @@ const Verified = () => {
           style={styles.image} 
         />
       </View>
-      <Text style={styles.success}>Otp Vervified Successfully</Text>
+      <Text style={[styles.success, {color: theme.color}]}>Otp Vervified Successfully</Text>
       
     </View>
     <Button buttonText="reset password" onPress={reset} />
@@ -72,5 +75,6 @@ const styles = StyleSheet.create({
     lineHeight: 34,
     fontFamily: 'AlegreyaSC_800ExtraBold',
     marginBottom: 130,
+    marginTop: 30,
   }
 });

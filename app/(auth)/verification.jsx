@@ -1,11 +1,14 @@
 import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import Back from "../../assets/images/back.svg";
+import Dark_back from "../../assets/images/Dark_back.svg";
 import { Poppins_400Regular } from '@expo-google-fonts/poppins';
 import Button from '../../components/Button/Button';
 import { Link, router } from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Verification = () => {
+  const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
   const back = () => {
     router.push('forget_password');
   };
@@ -59,12 +62,12 @@ const Verification = () => {
     return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
   };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={back}>
-          <Back />
+         {darkMode? <Dark_back /> : <Back />}
         </TouchableOpacity>
-        <Text style={styles.heading}>Verfication Code</Text>
+        <Text style={[styles.heading, {color: theme.color}]}>Verfication Code</Text>
       </View>
       <Text style={styles.verify_text}>We just send you a verify code. Check your inbox to get them.</Text>
       <View style={styles.name_input}>
@@ -86,9 +89,9 @@ const Verification = () => {
       </View>
       <Button buttonText="SUMBIT OTP" onPress={verify} />
       <View style={styles.resend_timer}>
-        <Text style={styles.resend}>Re-send code in</Text>
+        <Text style={[styles.resend, {color: theme.text2}]}>Re-send code in</Text>
         <View style={styles.timer_container}>
-          <Text style={styles.timer}>{formatTimer(timer)}</Text>
+          <Text style={[styles.timer, {color: theme.text2}]}>{formatTimer(timer)}</Text>
         </View>
       </View>
     </View>

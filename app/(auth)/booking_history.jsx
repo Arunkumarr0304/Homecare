@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import Back from "../../assets/images/back2.svg";
-import { useRouter, useLocalSearchParams } from "expo-router";
+import Dark_back from "../../assets/images/Dark_back2.svg";
+import { useRouter, useLocalSearchParams, router } from "expo-router";
 import Calendar from "../../assets/images/calendar.svg";
 import Call from "../../assets/images/call.svg";
 import { Poppins_400Regular, Poppins_500Medium, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
@@ -10,17 +11,25 @@ import { booking_status } from '../../components/Data/Data';
 import Product1 from "../../assets/images/product_img3.svg";
 import Provider1 from "../../assets/images/provider1.png";
 import Recommend from '../../components/Recommend/Recommend';
+import ThemeContext from '../../theme/ThemeContext';
 
 
 const Booking_History = () => {
+  const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
   const { booking } = useLocalSearchParams();
   const bookingDetails = booking ? JSON.parse(booking) : null;
 
+  const back = () => {
+    router.push('booking');
+  };
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
-        <Back />
-        <Text style={styles.heading}>Booking History</Text>
+        <TouchableOpacity onPress={back}>
+       {darkMode? <Dark_back /> : <Back />}
+        </TouchableOpacity>
+        <Text style={[styles.heading, {color: theme.heading}]}>Booking History</Text>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
       {bookingDetails && (
@@ -30,37 +39,37 @@ const Booking_History = () => {
               <Product1 />
             </View>
             <View style={styles.stack_header}>
-              <Text style={[styles.pro_name, { color: '#1A1D1F' }]}>{bookingDetails.product_name}</Text>
+              <Text style={[styles.pro_name, { color: theme.heading }]}>{bookingDetails.product_name}</Text>
               <Text style={styles.code}>{bookingDetails.code}</Text>
             </View>
           </View>
           <View style={styles.status_header}>
-            <Text style={styles.status}>status</Text>
+            <Text style={[styles.status, {color: theme.color}]}>status</Text>
             <Text style={styles.confirm}>confirmed</Text>
           </View>
           <View style={styles.timing_row}>
             <Calendar />
             <View style={styles.timing_column}>
-              <Text style={styles.timing}>{bookingDetails.timing}</Text>
+              <Text style={[styles.timing, {color: theme.heading}]}>{bookingDetails.timing}</Text>
               <Text style={styles.schedule}>Schedule</Text>
             </View>
           </View>
-          <Text style={styles.description}>Description</Text>
-          <Text style={styles.use}>Use Good Items for Uses</Text>
+          <Text style={[styles.description, {color: theme.color}]}>Description</Text>
+          <Text style={[styles.use, {color: theme.text2}]}>Use Good Items for Uses</Text>
           <View style={styles.profile_row}>
             <View style={styles.profile_left}>
               <Image source={Provider1} style={styles.provider} />
               <View style={styles.provider_column}>
-                <Text style={styles.provider_name}>{bookingDetails.providername}</Text>
+                <Text style={[styles.provider_name, {color: theme.text2}]}>{bookingDetails.providername}</Text>
                 <Text style={styles.work}>service provider</Text>
               </View>
             </View>
-            <View style={styles.second_button}>
+            <View style={[styles.second_button]}>
               <TouchableOpacity style={styles.call}>
                 <Call />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.button}>
-                <Text style={styles.button_text}>call</Text>
+              <TouchableOpacity style={[styles.button, {backgroundColor: theme.heading}]}>
+                <Text style={[styles.button_text, {color: theme.background}]}>call</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -132,7 +141,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: 10,
-    marginTop: 3,
+    marginTop: 10,
   },
   status: {
     fontSize: 14,

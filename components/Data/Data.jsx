@@ -67,6 +67,9 @@ import Heart from "../../assets/images/blue_heart.svg";
 import Detail1 from "../../assets/images/detail_star.svg";
 import Detail2 from "../../assets/images/detail_order.svg";
 import Detail3 from "../../assets/images/detail_star2.svg";
+import Dark_Detail1 from "../../assets/images/dark_detail_star.svg";
+import Dark_Detail2 from "../../assets/images/dark_detail_order.svg";
+import Dark_Detail3 from "../../assets/images/dark_detail_star2.svg";
 
 import Reviewer from "../../assets/images/reviewer.png";
 import Star from "../../assets/images/reviewer_start.svg";
@@ -526,16 +529,19 @@ export const improve_data = [
     {
         id: 1,
         image: <Detail1 />,
+        dark_image: <Dark_Detail1 />,
         text:  '4.8 Rating',
     },
     {
         id: 2,
         image: <Detail2 />,
+        dark_image: <Dark_Detail2 />,
         text: '56 Orders Completed',
     },
     {
         id: 3,
         image: <Detail3 />,
+        dark_image: <Dark_Detail3 />,
         text: '4 Years Experience',
     },
   ]
@@ -738,7 +744,7 @@ export const improve_data = [
     },
     {
         id: 4,
-        text: 'Change Address',
+        text: 'Dark mode',
     },
     {
         id: 5,

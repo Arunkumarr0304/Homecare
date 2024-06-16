@@ -1,20 +1,24 @@
 import { AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
-import React from 'react';
+import React, { useContext } from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import ThemeContext from '../../theme/ThemeContext';
 
 const Button = ({ buttonText, onPress, backgroundColor, textColor, borderColor }) => {
+  const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
   return (
     <TouchableOpacity
       style={[
         styles.button,
         {
-          backgroundColor: backgroundColor || '#241353',
+          
+          backgroundColor: darkMode ? theme.darkButtonBackground : backgroundColor || '#241353',
+        
           borderColor: borderColor || 'transparent', 
         },
       ]}
       onPress={onPress}
     >
-      <Text style={[styles.buttonText, { color: textColor || '#ffffff' }]}>
+      <Text style={[styles.buttonText, { color: darkMode ? theme.heading2 :  textColor || '#ffffff' }]}>
         {buttonText}
       </Text>
     </TouchableOpacity>

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback, useContext } from "react";
 import { View, Text, StyleSheet, Dimensions, ScrollView, StatusBar, Animated, TouchableOpacity, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from '@react-navigation/native';
@@ -8,15 +8,18 @@ import Button from "../components/Button/Button";
 import Pagination from "../components/Pagination/Pagination";
 import * as SplashScreen from 'expo-splash-screen';
 import Next from "../assets/images/next.svg";
+import Dark_next from "../assets/images/dark_next.svg";
 import { useFonts } from 'expo-font';
 import { Poppins_400Regular, Poppins_400Regular_Italic, Poppins_700Bold, Poppins_700Bold_Italic, Poppins_600SemiBold, Poppins_500Medium } from '@expo-google-fonts/poppins';
 import { AlegreyaSC_400Regular, AlegreyaSC_400Regular_Italic, AlegreyaSC_500Medium, AlegreyaSC_700Bold, AlegreyaSC_800ExtraBold } from '@expo-google-fonts/alegreya-sc';
+import ThemeContext from "../theme/ThemeContext";
 
 const { width } = Dimensions.get('window');
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
+  const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
   const navigation = useNavigation();
   const swiperRef = useRef(null);
   const totalPages = pages.length;
@@ -82,8 +85,12 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <StatusBar backgroundColor="rgba(0.8, 0.8, 0.8, 0.8)" barStyle="light-content" />
+    <SafeAreaView style={[styles.safearea, {backgroundColor: theme.background}]} onLayout={onLayoutRootView}>
+        <StatusBar 
+        translucent
+        backgroundColor="transparent"
+        barStyle={darkMode ? "light-content" : "dark-content"} 
+      />
       <ScrollView
         horizontal
         pagingEnabled
@@ -106,10 +113,10 @@ export default function App() {
         <Animated.View style={{ opacity: paginationOpacity }}>
           <Pagination activePageIndex={activePageIndex} totalPages={totalPages} />
         </Animated.View>
-        <Animated.Text style={[styles.heading, { opacity: headingOpacity }]}>
+        <Animated.Text style={[styles.heading, { opacity: headingOpacity, color: theme.color }]}>
           {pages[activePageIndex].heading}
         </Animated.Text>
-        <Animated.Text style={[styles.description, { opacity: descriptionOpacity }]}>
+        <Animated.Text style={[styles.description, { opacity: descriptionOpacity, color: theme.text2 }]}>
           {pages[activePageIndex].Text}
         </Animated.Text>
         <View style={styles.page_button_container}>
@@ -124,7 +131,7 @@ export default function App() {
             </View>
           ) : (
             <TouchableOpacity onPress={handleNextPress} style={{ paddingTop: 15, alignItems: 'center' }}>
-              <Next />
+            { darkMode? <Dark_next /> : <Next />}
             </TouchableOpacity>
           )}
         </View>
@@ -134,10 +141,15 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  safearea: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+  },
   page: {
     flex: 1,
     alignItems: 'center',
     paddingTop: 70,
+    
   },
   imageContainer: {
     height: 330,

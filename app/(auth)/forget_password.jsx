@@ -1,28 +1,32 @@
 import { StyleSheet, Text, View, TouchableOpacity,  TextInput } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import Back from "../../assets/images/back.svg";
+import Dark_back from "../../assets/images/Dark_back.svg";
 import { AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
 import { Poppins_400Regular } from '@expo-google-fonts/poppins';
 import Button from '../../components/Button/Button';
 import {Redirect, router} from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Forget_password = () => {
+  const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
   const back = () => {
     router.push('log_sign');
   };
   const OTP = () => {
     router.push('verification');
   };
+  
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
         <TouchableOpacity onPress={back}>
-        <Back />
+       {darkMode? <Dark_back /> : <Back />}
         </TouchableOpacity>
-        <Text style={styles.heading}>Forgot password</Text>
+        <Text style={[styles.heading, {color: theme.color}]}>Forgot password</Text>
       </View>
       <View style={styles.input_section}>
-          <Text style={styles.label}>Email</Text>
+          <Text style={[styles.label, {color: theme.color}]}>Email</Text>
           <TextInput
             style={[styles.input]}
             autoCapitalize="none"

@@ -1,7 +1,8 @@
 import { Poppins_400Regular, Poppins_500Medium, Poppins_700Bold } from '@expo-google-fonts/poppins';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Mark from "../../assets/images/mark.svg";
+import ThemeContext from '../../theme/ThemeContext';
 
 const CustomCalendar = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -46,7 +47,7 @@ const CustomCalendar = () => {
   // Current month and year
   const currentMonth = weekDates[0].toLocaleDateString('en-US', { month: 'long' });
   const currentYear = weekDates[0].getFullYear();
-
+  const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -60,11 +61,11 @@ const CustomCalendar = () => {
             <TouchableOpacity
               style={[
                 styles.dateButton,
-                selectedDate && selectedDate.toDateString() === date.toDateString() && styles.selectedDate,
+                selectedDate && selectedDate.toDateString() === date.toDateString() && [styles.selectedDate, {backgroundColor: theme.heading}],
               ]}
               onPress={() => handleDatePress(date)}
             >
-              <Text style={[styles.dateText, selectedDate && selectedDate.toDateString() === date.toDateString() && styles.selectedDateText]}>{date.getDate()}</Text>
+              <Text style={[styles.dateText, selectedDate && selectedDate.toDateString() === date.toDateString() && [styles.selectedDateText, {color: theme.background}]]}>{date.getDate()}</Text>
             </TouchableOpacity>
           </View>
         ))}

@@ -1,22 +1,31 @@
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import Back from "../../assets/images/back2.svg";
+import Dark_back from "../../assets/images/Dark_back2.svg";
 import { AlegreyaSC_400Regular, AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
 import { Poppins_400Regular } from '@expo-google-fonts/poppins';
 import { cards } from '../../components/Data/Data';
 import Visa from "../../assets/images/visa.svg";
 import Button from '../../components/Button/Button';
+import { Link, router } from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Card_details = () => {
+    const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
+    const back = () => {
+        router.push('address_details');
+    };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
         <View style={styles.header_left}>
-        <Back />
-        <Text style={styles.heading}>Address Detail</Text>
+            <TouchableOpacity onPress={back}>
+       {darkMode? <Dark_back /> : <Back />}
+        </TouchableOpacity>
+        <Text style={[styles.heading, {color: theme.heading}]}>Card Detail</Text>
         </View>
         <TouchableOpacity >
-            <Text style={styles.add}>+ Add New Card</Text>
+            <Text style={[styles.add, {color: theme.text2}]}>+ Add New Card</Text>
         </TouchableOpacity>
       </View>
       <ScrollView horizontal={true} style={styles.card_container}>
@@ -41,16 +50,16 @@ const Card_details = () => {
       </ScrollView>
       <View style={styles.order_bill}>
         <View style={styles.row1}>
-            <Text style={styles.order}>Order</Text>
-            <Text style={styles.order_no}>28.00$</Text>
+            <Text style={[styles.order, {color: theme.text2}]}>Order</Text>
+            <Text style={[styles.order_no, {color: theme.text2}]}>28.00$</Text>
         </View>
         <View style={styles.row1}>
-            <Text style={styles.order}>Delivery</Text>
-            <Text style={styles.order_no}>7.20$</Text>
+            <Text style={[styles.order, {color:theme.text2}]}>Delivery</Text>
+            <Text style={[styles.order_no, {color: theme.text2}]}>7.20$</Text>
         </View>
         <View style={styles.row1}>
-            <Text style={styles.summary}>summary</Text>
-            <Text style={styles.total}>35.20$</Text>
+            <Text style={[styles.summary, {color: theme.text2}]}>summary</Text>
+            <Text style={[styles.total, {color: theme.text2}]}>35.20$</Text>
         </View>
       </View>
       <View style={styles.button_box}>
@@ -64,7 +73,7 @@ export default Card_details;
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 50,
+        paddingVertical: 50,
         paddingHorizontal: 20,
     },
     header: {
@@ -79,8 +88,8 @@ const styles = StyleSheet.create({
     },
     heading: {
         color: '#241353',
-        fontSize: 14,
-        lineHeight: 24,
+        fontSize: 24,
+        lineHeight: 34,
         fontFamily: 'AlegreyaSC_700Bold',
     },
     add: {

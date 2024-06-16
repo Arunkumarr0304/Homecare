@@ -1,59 +1,80 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
+import React, { useContext, useState } from 'react';
 import { AlegreyaSC_400Regular, AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
 import Stars from "../../assets/images/stars.svg";
+import Dark_stars from "../../assets/images/dark_stars.svg";
 import Call from "../../assets/images/call.svg";
-import { our_service, our_service_tab, tab } from '../Data/Data';
+import { our_service, our_service_tab } from '../Data/Data';
 import Button from '../Button/Button';
 import { Poppins_400Regular } from '@expo-google-fonts/poppins';
-
+import { Link, router } from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Services = () => {
-  return (
-    <View style={styles.service_section}>
-      <Text style={styles.heading}>Our Services</Text>
-      <ScrollView horizontal={true} style={styles.service_tab_container}>
-        {
-            our_service_tab.map((d) => (
-                <View style={styles.tab} key={d.id}>
-                 <Text style={styles.tab_text}>{d.text}</Text>
-                </View>
-            ))
-        }
-      </ScrollView>
-      <View style={styles.sevice_card_container}>
-        {
-            our_service.map((d) => (
-                <View style={styles.card} key={d.id}>
-                    <Image source={d.image} alt='image' />
-                    <View style={styles.card_body}>
-                        <View style={styles.card_review}>
-                            <Stars />
-                            <Text style={styles.reviews}>{d.review}</Text>
-                        </View>
-                        <Text style={styles.card_heading}>{d.heading}</Text>
-                        <Text style={styles.description}>{d.description}</Text>
-                        <View style={styles.button_container}>
-                            <TouchableOpacity style={styles.button}>
-                                <Text style={styles.button_text}>Book Now</Text>
-                            </TouchableOpacity>
-                            <View style={styles.second_button}>
-                            <TouchableOpacity style={styles.call}> 
-                            <Call />
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.button}>
-                                <Text style={styles.button_text}>call Now</Text>
-                            </TouchableOpacity>
+    const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
+    const [activeTab, setActiveTab] = useState(our_service_tab[0].id);
+
+    const book_now = () => {
+        router.push('address_details');
+    };
+
+    return (
+        <View style={styles.service_section}>
+            <Text style={[styles.heading, {color: theme.color}]}>Our Services</Text>
+            <ScrollView horizontal={true} style={styles.service_tab_container}>
+                {our_service_tab.map((d) => (
+                    <TouchableOpacity
+                        key={d.id}
+                        style={[
+                            styles.tab,
+                            {borderColor: theme.bordercolor},
+                            activeTab === d.id && styles.activeTab
+                        ]}
+                        onPress={() => setActiveTab(d.id)}
+                    >
+                        <Text
+                            style={[
+                                styles.tab_text,
+                                {color: theme.color},
+                                activeTab === d.id && styles.activeTabText
+                            ]}
+                        >
+                            {d.text}
+                        </Text>
+                    </TouchableOpacity>
+                ))}
+            </ScrollView>
+            <View style={styles.sevice_card_container}>
+                {our_service.map((d) => (
+                    <TouchableOpacity style={styles.card} key={d.id}>
+                        <Image source={d.image} alt='image' />
+                        <View style={[styles.card_body, {borderColor: theme.heading}]}>
+                            <View style={styles.card_review}>
+                              { darkMode? <Dark_stars /> : <Stars />}
+                                <Text style={[styles.reviews, {color: theme.color}]}>{d.review}</Text>
+                            </View>
+                            <Text style={[styles.card_heading, {color: theme.color}]}>{d.heading}</Text>
+                            <Text style={styles.description}>{d.description}</Text>
+                            <View style={styles.button_container}>
+                                <TouchableOpacity style={[styles.button, {backgroundColor:theme.heading}]} onPress={book_now}>
+                                    <Text style={[styles.button_text, {color:theme.background}]}>Book Now</Text>
+                                </TouchableOpacity>
+                                <View style={[styles.second_button, {borderColor: theme.heading}]}>
+                                    <TouchableOpacity style={styles.call}>
+                                        <Call />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={[styles.button,{backgroundColor: theme.heading}]}>
+                                        <Text style={[styles.button_text, {color: theme.background}]}>Call Now</Text>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                         </View>
-                    </View>
-                </View>
-            ))
-        }
-      </View>
-    </View>
-  )
-}
+                    </TouchableOpacity>
+                ))}
+            </View>
+        </View>
+    );
+};
 
 export default Services;
 
@@ -73,6 +94,20 @@ const styles = StyleSheet.create({
     },
     tab: {
         marginRight: 15,
+        paddingBottom: 5, // Add some padding to make space for the border
+        borderBottomWidth: 0, // Default to no border
+    },
+    activeTab: {
+        borderBottomWidth: 2, // Active tab border width
+    },
+    tab_text: {
+        fontSize: 14,
+        lineHeight: 19,
+        fontFamily: 'AlegreyaSC_400Regular',
+        color: '#000000',
+    },
+    activeTabText: {
+        fontWeight: 'bold', // Optional: make the active tab text bold
     },
     sevice_card_container: {
         flexDirection: 'row',
@@ -90,10 +125,10 @@ const styles = StyleSheet.create({
         borderLeftColor: '#34275A',
         borderRightColor: '#34275A',
         borderTopColor: 'transparent',
+        borderTopWidth: 0,
         paddingHorizontal: 4,
         paddingVertical: 10,
         gap: 5,
-        
     },
     card_review: {
         flexDirection: 'row',
@@ -146,12 +181,5 @@ const styles = StyleSheet.create({
         bottom: 8,
         left: 3,
         zIndex: 100,
-        
     },
-    tab_text: {
-        fontSize: 14,
-        lineHeight: 19,
-        fontFamily: 'AlegreyaSC_400Regular',
-        color: '#000000',
-    }
-})
+});

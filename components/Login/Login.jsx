@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { AlegreyaSC_500Medium, AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
 import { Link, router } from "expo-router";
@@ -6,8 +6,10 @@ import { Poppins_400Regular } from '@expo-google-fonts/poppins';
 import Button from '../Button/Button';
 import { log_tabs, tab } from '../Data/Data';
 import PhoneInput from '../PhoneInput/PhoneInput';
+import ThemeContext from '../../theme/ThemeContext';
 
 const Login = () => {
+  const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
   const login = () => {
     router.push('home');
   };
@@ -15,10 +17,10 @@ const Login = () => {
   const [country, setCountry] = useState(null);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
        
        <View style={styles.phone_box}>
-       <Text style={styles.label}>Phone Number</Text>
+       <Text style={[styles.label, {color: theme.color}]}>Phone Number</Text>
        <PhoneInput
         defaultCode="US"
         defaultValue=""
@@ -27,15 +29,15 @@ const Login = () => {
       />
       </View>
       <View style={styles.phone_box}>
-        <Text style={styles.label}>Password</Text>
+        <Text style={[styles.label, {color: theme.color}]}>Password</Text>
         <TextInput
           style={styles.password_input}
           placeholder='Enter password'
         />
       </View>
-      <Link href='/forget_password' style={styles.forget}>Forgot password ?</Link>
+      <Link href='/forget_password' style={[styles.forget, {color: theme.heading}]}>Forgot password ?</Link>
       <Button buttonText="Login" onPress={login} />
-      <Text style={styles.or}>Or</Text>
+      <Text style={[styles.or, {color: theme.color}]}>Or</Text>
       <Text style={styles.with}>Sign in with</Text>
       <View style={styles.tab_container}>
         {
@@ -87,12 +89,12 @@ const styles = StyleSheet.create({
     padding: 12,
   },
   forget: {
-    fontSize: 11,
+    fontSize: 13,
     lineHeight: 14,
     fontFamily: 'Poppins_400Regular',
     textTransform: 'capitalize',
     color: '#241353',
-    marginTop: 8,
+    marginTop: 10,
     marginBottom: 170,
   },
   or: {

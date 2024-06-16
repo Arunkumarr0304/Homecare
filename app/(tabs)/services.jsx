@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import { AlegreyaSC_500Medium, AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
 import Star from "../../assets/images/recommend_star.svg";
 import Approved from "../../assets/images/approved.svg";
@@ -7,8 +7,11 @@ import { service_provide_data } from '../../components/Data/Data';
 import { Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import Filter from "../../assets/images/filter.svg";
 import { Link, router } from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
+import Dark_filter from "../../assets/images/dark_filter.svg";
 
 const Service_Provider = () => {
+    const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
     const details =() => {
         router.push('provider_details');
     };
@@ -19,11 +22,11 @@ const Service_Provider = () => {
         router.push('address_details');
     };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
-      <Text style={styles.heading}>Services Provider</Text>
+      <Text style={[styles.heading, {color: theme.heading}]}>Services Provider</Text>
       <TouchableOpacity onPress={filter} >
-      <Filter />
+    { darkMode? <Dark_filter /> : <Filter />}
       </TouchableOpacity>
       </View>
 
@@ -94,6 +97,7 @@ const styles = StyleSheet.create({
         position: 'relative',
         marginTop: 55,
         maxWidth: 155,
+        backgroundColor: '#ffffff',
     },
     profile: {
         width: 85,

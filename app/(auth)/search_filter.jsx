@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Back from "../../assets/images/back2.svg";
+import Dark_back from "../../assets/images/Dark_back2.svg";
 import { AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
 import { Experience, available, filter_rating, filter_rating2, services } from '../../components/Data/Data';
 import { Poppins_500Medium, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
@@ -9,8 +10,10 @@ import Star from "../../assets/images/Star.svg";
 import Slider from '@react-native-community/slider';
 import Button from '../../components/Button/Button';
 import { Link, router } from "expo-router";
+import ThemeContext from '../../theme/ThemeContext';
 
 const Search_filter = () => {
+  const { theme, toggleTheme, darkMode } = useContext(ThemeContext);
   const [selectedService, setSelectedService] = useState(services[0].id);
   const [selectedService2, setSelectedService2] = useState(Experience[0].id);
   const [selectedAvailability, setSelectedAvailability] = useState(available[0].id);
@@ -20,7 +23,9 @@ const Search_filter = () => {
 const filter = () => {
   router.push('services');
 };
-
+const back = () => {
+  router.push('services');
+};
   const handleSliderChange = (value) => {
     setSliderValue(value);
     console.log('Slider value changed:', value);
@@ -32,27 +37,29 @@ const filter = () => {
   };
  
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.background}]}>
       <View style={styles.header}>
-        <Back />
-        <Text style={styles.heading}>Search Filter</Text>
+        <TouchableOpacity onPress={back}>
+       {darkMode? <Dark_back /> : <Back />}
+        </TouchableOpacity>
+        <Text style={[styles.heading, {color: theme.heading}]}>Search Filter</Text>
       </View>
       <ScrollView showsVerticalScrollIndicator={false} >
-      <Text style={styles.title}>Services</Text>
+      <Text style={[styles.title, {color: theme.color}]}>Services</Text>
       <View style={styles.services_container}>
         {
           services.map((d) => (
             <TouchableOpacity
               style={[
                 styles.stack,
-                selectedService === d.id && styles.selected_stack
+                selectedService === d.id && [styles.selected_stack, {backgroundColor: theme.heading}]
               ]}
               key={d.id}
               onPress={() => setSelectedService(d.id)}
             >
               <Text style={[
                 styles.stack_text,
-                selectedService === d.id && styles.selected_stack_text
+                selectedService === d.id && [styles.selected_stack_text, {color: theme.background}]
               ]}>
                 {d.text}
               </Text>
@@ -60,14 +67,14 @@ const filter = () => {
           ))
         }
       </View>
-      <Text style={styles.title}>Availability</Text>
+      <Text style={[styles.title, {color: theme.color}]}>Availability</Text>
       <View style={styles.available_container}>
         {
           available.map((d) => (
             <TouchableOpacity
               style={[
                 styles.available_stack,
-                selectedAvailability === d.id && styles.selected_stack
+                selectedAvailability === d.id && [styles.selected_stack, {backgroundColor: theme.heading}]
               ]}
               key={d.id}
               onPress={() => setSelectedAvailability(d.id)}
@@ -75,7 +82,7 @@ const filter = () => {
               <Tick />
               <Text style={[
                 styles.stack_text,
-                selectedAvailability === d.id && styles.selected_stack_text
+                selectedAvailability === d.id && [styles.selected_stack_text, {color: theme.background}]
               ]}>
                 {d.text}
               </Text>
@@ -83,21 +90,21 @@ const filter = () => {
           ))
         }
       </View>
-      <Text style={styles.title}>Experience Level</Text>
+      <Text style={[styles.title, {color: theme.color}]}>Experience Level</Text>
       <View style={styles.services_container}>
         {
           Experience.map((d) => (
             <TouchableOpacity
               style={[
                 styles.stack,
-                selectedService2 === d.id && styles.selected_stack
+                selectedService2 === d.id && [styles.selected_stack, {backgroundColor: theme.heading}]
               ]}
               key={d.id}
               onPress={() => setSelectedService2(d.id)}
             >
               <Text style={[
                 styles.stack_text,
-                selectedService2 === d.id && styles.selected_stack_text
+                selectedService2 === d.id && [styles.selected_stack_text, {color: theme.background}]
               ]}>
                 {d.text}
               </Text>
@@ -105,13 +112,13 @@ const filter = () => {
           ))
         }
       </View>
-      <Text style={styles.title}>Rating</Text>
+      <Text style={[styles.title, {color: theme.color}]}>Rating</Text>
       <View style={styles.rating_container}>
         {
           filter_rating.map((d) => (
             <View style={styles.rating_row} key={d.id}>
               <Star />
-              <Text style={styles.rating}>{d.rating}</Text>
+              <Text style={[styles.rating, {color: theme.heading}]}>{d.rating}</Text>
             </View>
           ))
         }
@@ -122,18 +129,18 @@ const filter = () => {
             maximumValue={3000}
             value={sliderValue}
             onValueChange={handleSliderChange}
-            minimumTrackTintColor="#241353"
+            minimumTrackTintColor="blue"
             maximumTrackTintColor="#ddd"
             thumbTintColor="blue"
           />
 
-<Text style={styles.title}>Pricing</Text>
+<Text style={[styles.title, {color: theme.color}]}>Pricing</Text>
       <View style={styles.rating_container}>
         {
           filter_rating2.map((d) => (
             <View style={styles.rating_row} key={d.id}>
               
-              <Text style={styles.rating}>{d.rating}</Text>
+              <Text style={[styles.rating, {color: theme.heading}]}>{d.rating}</Text>
             </View>
           ))
         }
@@ -144,7 +151,7 @@ const filter = () => {
             maximumValue={3000}
             value={sliderValue2}
             onValueChange={handleSliderChange2}
-            minimumTrackTintColor="#241353"
+            minimumTrackTintColor="blue"
             maximumTrackTintColor="#ddd"
             thumbTintColor="blue"
           />
