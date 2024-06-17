@@ -2,7 +2,6 @@ import onboar1 from "../../assets/images/Onboard_img1.png";
 import onboar2 from "../../assets/images/Onboard_img2.png";
 import onboar3 from "../../assets/images/Onboard_img3.png";
 
-
 import Phone from "../../assets/images/Phone.svg";
 import Google from "../../assets/images/Google.svg";
 import Google2 from "../../assets/images/google2.svg";
@@ -82,22 +81,22 @@ export const pages = [
     {
         id: 1,
         image: onboar1,
-        heading: 'Discover Your Sound',    
-        Text: 'Find and enjoy your favorite tunes effortlessly. Join a community of music lovers today.',
+        heading: 'Beauty parlour at your home',    
+        Text: ' Lorem ipsum is a placeholder text commonly used to demonstrate the visual.',
         
     },
     {
         id: 2,
         image: onboar2,
-        heading: 'Soundtrack Your Life',
-        Text: 'Find and enjoy your favorite tunes effortlessly. Join a community of music lovers today.',
+        heading: 'Plumber & expart nearby you',
+        Text: ' Lorem ipsum is a placeholder text commonly used to demonstrate the visual.',
 
     },
     {
         id: 3,
         image: onboar3,
-        heading: 'Your Music, Your Way',
-        Text: 'Find and enjoy your favorite tunes effortlessly. Join a community of music lovers today.',
+        heading: 'Professional home cleaning',
+        Text: ' Lorem ipsum is a placeholder text commonly used to demonstrate the visual.',
 
     },
 ]

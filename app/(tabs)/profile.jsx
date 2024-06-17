@@ -4,7 +4,7 @@ import Profiles from "../../assets/images/Profile.png";
 import { AlegreyaSC_700Bold } from '@expo-google-fonts/alegreya-sc';
 import { Poppins_400Regular } from '@expo-google-fonts/poppins';
 import Right from "../../assets/images/white_right_vector.svg";
-import Dark_Right from "../../assets/images/right_vector.svg";
+import Dark_Right from "../../assets/images/big_dark_right.svg";
 import { profile_data } from '../../components/Data/Data';
 import ThemeContext from '../../theme/ThemeContext'; 
 
