@@ -578,7 +578,7 @@ export const improve_data = [
         card_no : '•••• •••• •••• 3282',
         name: 'Aycan Doganlar',
         date: '12/23',
-        card_bg: '#241353',
+        card_bg: '#7AA0DA',
     },
     {
         id: 3,
